@@ -1,5 +1,5 @@
 <%
-@images ||= site.sections.find_by_name("home").images
+@images = site.sections.find_by_name("main").images unless @images and @images.any?
 %>
 <div id="wrapper-wide-header" class="wrapper-wide">
   <% if @images.any? %>
