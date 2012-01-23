@@ -1,0 +1,26 @@
+<%
+@images ||= site.sections.find_by_name("home").images
+%>
+<div id="wrapper-wide-header" class="wrapper-wide">
+  <% if @images.any? %>
+  <div class="wrapper-content featured">
+      <div class="twelve columns">
+        <% unless is_mobile_view? %>
+          <div id="featured">
+            <% @images.each do |image| %>
+              <%= image_fu(image,"980x300#") %>
+            <% end %>
+          </div> 
+        <% end %>
+      </div>
+  </div>
+  <% end %>
+  <header id="header" class="wrapper-content">
+
+    <div id="site-title-container">
+      <h2 id='site-title'><%= link_to(site.title, root_url) %></h2>
+      <h4><%= site.subtitle if site.subtitle.present? %></h4> 
+    </div> 
+    <%= render '/shared/menu', :sections => @main_menu, :menu_name => "primary" %>
+  </header>
+</div>

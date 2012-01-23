@@ -1,0 +1,231 @@
+$baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;      
+$baseFontColor: #3C3C3C;
+$bodyBackground: #0B313A;
+$altColor: #114a57;//green
+$linkColor: $altColor;
+$linkColorActive: #196f83;
+$linkColorHover: #196f83;
+$navBarHeight: 36px; 
+
+@import "gko/gko_public_all"; 
+@import "gko/elastislide"; 
+/*-----------------------------------------
+   Overwritte
+----------------------------------------- */ 
+.nav-bar {
+	li {
+		a {
+			@include link-colors(#fff,#279db9,#279db9 )
+		}
+	}
+}
+
+/*-----------------------------------------
+   Structure
+----------------------------------------- */
+.body-container {
+ position:relative;
+}
+.wrapper-wide {
+ @include container;
+	max-width: 940px;
+	@include center-block;
+	background:#ffffff;
+}
+.wrapper-content {
+	@include row;
+	max-width: 980px;
+}
+#main-content{
+ @include column(12);
+	margin-top:34px;
+}
+#main-content.sidebar {
+ @include column(9);
+} 
+#main-content.sidebar.left_sidebar {
+ @include column(7);
+}
+#left_sidebar{ 
+ @include column(3);
+ margin-top: 34px; 
+}
+#sidebar{ 
+ @include column(2);
+ margin-top: 34px; 
+}
+#wrapper-wide-footer {
+	text-align: center;
+	font-size: 12px;
+	background: #000;
+	color: #fff;
+}
+#wrapper-wide-masterhead {
+ 	position:relative;
+	z-index: 2;
+	background:transparent;
+}
+#masterhead {
+	background:transparent;
+}
+#wrapper-wide-header {
+ position:relative;
+}
+
+div.timer {
+	//display:none;
+	top: 250px;
+	opacity: 0;
+}
+div.slider-nav {
+	display: none;
+}
+/*-----------------------------------------
+   MASTER HEADER 
+----------------------------------------- */
+ul#locales {
+	position:absolute; 
+	z-index: 2;
+	width: auto;
+	min-width: 1px;
+	right: 0;
+	top: 20px;
+	a {
+		border-left: 4px solid white;
+		border-top: 4px solid white;
+		border-bottom: 4px solid white;
+		text-indent: -9999px;
+		width:30px;
+		height:20px;
+		display:block;
+		&.fr {
+			background: transparent asset-url('fr_flag.png', image) no-repeat 0 0;
+		}
+		&.en {
+			background: transparent asset-url('en_flag.png', image) no-repeat 0 0;
+		}
+	}
+}
+/*-----------------------------------------
+   HEADER
+----------------------------------------- */
+.featured { 
+	position: absolute;
+	height: 300px;
+	margin-left: -20px ;
+	top:0px;
+	left:20px;
+	overflow:hidden;
+	z-index:1; 
+}
+#site-title-container {
+	position: absolute;
+	top:0px;
+	left:0px;
+	z-index:2;
+	@media only screen and (max-width: 767px) { 
+		height: auto;
+		position:relative;
+	}	
+} 
+h2#site-title {
+	@include logo(386px, 136px);
+}
+#header {
+	height: 300px;
+	position:relative;
+	nav#primary-menu {
+		position: absolute;
+		bottom:0px;
+		left:0px;
+		z-index:2;
+	}
+	.nav-bar {
+		margin-bottom:0px;
+		@extend block-center; 
+		li {
+			background: #000;
+			margin-left:8px; 
+			@include corner-top(8px);
+			&.active {
+				background: #fff;
+				a {
+					@include link-colors(#279db9,#000,#000 )
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 767px) {
+	#header { 
+		height: auto;
+		nav#primary-menu {
+			height: auto;
+			position: relative;
+			display:block; 
+			&.mobile { 
+				height: auto;
+				position:relative;
+			}
+			.nav-bar {
+				height: auto;
+				position:relative;
+				li { 
+					background: $bodyBackground; 
+					@include corner-top(0px);
+					margin-left:0px;
+					&.active {
+						background: #fff;
+						a {
+							@include link-colors(#279db9,#000,#000 )
+						}
+					}
+				}
+			}
+		}
+	}	 
+}	
+
+/*-----------------------------------------
+   Sidebar
+----------------------------------------- */
+#sidebar {
+	h3 {
+		font-size: 18px;
+		a {
+			padding: 9px 0px 9px 40px;
+			background: asset_url("compass_icon.gif", image) no-repeat 0 0;
+			&#echo {
+				background-image: asset_url("pin_icon.gif", image);
+			}
+		}
+	}
+}
+
+aside {
+	.nav-bar {
+		@include vertical-nav-bar; 
+	}
+}
+
+nav#pipe-menu {
+	.nav-bar {
+		margin-top: 0px;
+	}
+}
+/*-----------------------------------------
+   site infos
+----------------------------------------- */ 
+#site-infos {
+	margin-left: -20px;
+	margin-right: -20px;
+	background: $bodyBackground;
+	padding-top: 12px;
+	overflow:hidden;
+	a { 
+		float:right;
+		@include link-colors(#279db9,#fff,#fff);
+		background: $bodyBackground;
+		margin-right: 20px; 
+	}
+}

@@ -1,0 +1,31 @@
+<% 
+@newsletters_section = site.sections.find_by_name("newsletters")
+@latest_newsletter =  @newsletters_section.document_items.first
+%>
+<div class="row">
+  <section class="three columns">
+    <% if @latest_newsletter and @latest_newsletter.document.present? %>
+      <div class="latest_newsletter list-view-files hide-on-phones" style="min-height:1px;">
+        <div class="entry-thumb <%= 'missing-thumbnail' unless @newsletters_section.thumbnail.present? %>"> 
+          <%= image_tag(@latest_newsletter.thumbnail.url) if @latest_newsletter.thumbnail.present? %> 
+        </div> 
+        <%= render_record_title(@latest_newsletter, :show_link => false) %>
+        <%#TODO why do not set required this element  %>
+        <% if @latest_newsletter.document.present? %> 
+          <div class="entry-links">
+          <%= link_to(t(:download_file), @latest_newsletter.document.url, :class => 'download') %>
+          </div>
+        <% end %>
+       </div>
+    <% end %>  
+  </section>
+  <section class="seven columns">
+    <% if resource.body.present? %>
+      <div class="page_content">
+        <%= resource_body_tag do %>
+          <%= render_html_text(resource.body) %>
+        <% end %> 
+      </div> 
+    <% end %> 
+  </section>
+</div>
