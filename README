@@ -1,9 +1,13 @@
 cd ~/developer/workspace/gko_reserve_naturelle_stbarth_com
 bundle install
 rails s
+
+bundle install
 bundle exec rake assets:precompile
-
-
+git add
+git commit -m "precompile"
+git push
+cap deploy
 
 bundle exec rake railties:install:migrations
 bundle exec rake db:bootstrap
