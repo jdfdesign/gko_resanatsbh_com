@@ -72,14 +72,6 @@ $navBarHeight: 36px;
  position:relative;
 }
 
-div.timer {
-	//display:none;
-	top: 250px;
-	opacity: 0;
-}
-div.slider-nav {
-	display: none;
-}
 /*-----------------------------------------
    MASTER HEADER 
 ----------------------------------------- */
@@ -107,6 +99,17 @@ ul#locales {
 	}
 }
 /*-----------------------------------------
+   BANNERS
+----------------------------------------- */
+div.timer {
+	//display:none;
+	top: 250px;
+	opacity: 0;
+}
+div.slider-nav {
+	display: none;
+}
+/*-----------------------------------------
    HEADER
 ----------------------------------------- */
 .featured { 
@@ -118,6 +121,7 @@ ul#locales {
 	overflow:hidden;
 	z-index:1; 
 }
+
 #site-title-container {
 	position: absolute;
 	top:0px;
@@ -203,6 +207,7 @@ h2#site-title {
 	}
 }
 
+/* SHOULD BE IN GLOBAL CSS */
 aside {
 	.nav-bar {
 		@include vertical-nav-bar; 
