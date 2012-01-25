@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123150880) do
+ActiveRecord::Schema.define(:version => 20120124205939) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(:version => 20120123150880) do
     t.integer  "country_id"
   end
 
-  add_index "document_lists", ["country_id"], :name => "index_press_articles_on_country_id"
-  add_index "document_lists", ["section_id"], :name => "index_press_articles_on_section_id"
-  add_index "document_lists", ["site_id"], :name => "index_press_articles_on_site_id"
+  add_index "document_items", ["country_id"], :name => "index_press_articles_on_country_id"
+  add_index "document_items", ["section_id"], :name => "index_press_articles_on_section_id"
+  add_index "document_items", ["site_id"], :name => "index_press_articles_on_site_id"
 
   create_table "document_translations", :force => true do |t|
     t.integer  "document_id"
@@ -274,6 +274,7 @@ ActiveRecord::Schema.define(:version => 20120123150880) do
     t.string   "image_ext"
     t.integer  "globalized",                             :default => 0
     t.integer  "image_folder_id"
+    t.integer  "asset_assignments_count",                :default => 0
   end
 
   add_index "images", ["account_id"], :name => "index_images_on_account_id"
