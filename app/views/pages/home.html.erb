@@ -6,16 +6,13 @@
   <section class="three columns">
     <% if @latest_newsletter and @latest_newsletter.document.present? %>
       <div class="latest_newsletter list-view-files hide-on-phones" style="min-height:1px;">
-        <div class="entry-thumb <%= 'missing-thumbnail' unless @newsletters_section.thumbnail.present? %>"> 
+        <div class="entry-thumb <%= 'missing-document-preview' unless @latest_newsletter.thumbnail.present? %>"> 
           <%= image_tag(@latest_newsletter.thumbnail.url) if @latest_newsletter.thumbnail.present? %> 
         </div> 
         <%= render_record_title(@latest_newsletter, :show_link => false) %>
-        <%#TODO why do not set required this element  %>
-        <% if @latest_newsletter.document.present? %> 
-          <div class="entry-links">
+        <div class="entry-links">
           <%= link_to(t(:download_file), @latest_newsletter.document.url, :class => 'download') %>
-          </div>
-        <% end %>
+        </div>
        </div>
     <% end %>  
   </section>
