@@ -1,81 +1,155 @@
-$baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;      
-$baseFontColor: #3C3C3C;
-$bodyBackground: #0B313A;
-$altColor: #114a57;//green
-$linkColor: $altColor;
-$linkColorActive: #196f83;
-$linkColorHover: #196f83;
-$navBarHeight: 36px; 
+ 
 
-@import "gko/gko_public_all"; 
+//custom variables >>>
+$greenMedium: #114a57; //green
+$greenLight: #279DB9;  
+//<<< custom variables
+
+$global-radii-blocks: 4px;
+
+// Layout 
+$containerMaxWidth: 980px; 
+$rowMaxWidth: 940px;
+
+$bodyBackgroundColor: #0B313A;
+$contentBackgroundColor: #ffffff;
+$footerContainerBackgroundColor: none;
+$footerBackgroundColor: black;
+$copyrightContainerBackgroundColor: $footerContainerBackgroundColor;
+$copyrightBackgroundColor: $footerBackgroundColor; 
+$mainBackgroundColor: #ffffff;
+$sidebarBackgroundColor: #ffffff;
+
+// Typography
+$baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+$baseFontSize: 12px;
+$baseLineHeight: 20px;
+$textColor: #3C3C3C;
+$headingFontFamily: $baseFontFamily;
+$headingTextColor: $textColor;
+$headingBaseFontSize: 26px;
+
+// Links
+$linkColor: $greenMedium;
+$linkColorHover: #196f83;
+$linkColorActive: #196f83;
+
+// Nav base 
+$navLinkColor: $greenLight;
+$navLinkColorHover: $greenMedium;
+$navLinkColorActive: $navLinkColorHover;
+$navBackgroundColor: transparent;
+$navBackgroundColorHover: $navBackgroundColor;
+$navBackgroundColorActive: $navBackgroundColor;
+
+// Navbar
+$navbarBackgroundHighlight: $bodyBackgroundColor;
+$navbarBackground: $bodyBackgroundColor;
+$navbarText: $textColor;
+$navbarLinkColor: white;
+$navbarLinkColorHover: $greenLight;
+$navbarLinkColorActive: $navbarLinkColorHover;
+$navbarLinkSpace: 8px;
+$navbarLinkBackgroundColor: black;
+$navbarLinkBackgroundColorHover: $navbarLinkBackgroundColor;
+$navbarLinkBackgroundColorActive: white;
+$navbarLinkCorner: 8px 8px 0 0;
+$navbarButtonBackgroundHighlight: $navbarBackgroundHighlight; 
+$navbarButtonBackground: black; 
+$navbarButtonIconBarColor: white;
+$navbarResponsiveLinkBorder: lighter($navbarLinkColor, 15%);
+$navbarDropdownBackground: $navbarBackground;
+$navbarDropdownLinkColor: $navbarLinkColor;
+$navbarDropdownLinkColorHover: $navbarLinkColorHover;
+$navbarDropdownLinkColorActive: $navbarLinkColorActive; 
+
+// Footer links
+$footerLinkColor: white;
+$footerLinkColorHover: $greenLight;
+$footerLinkColorActive: #fff;
+$footerResponsiveLinkBorder: lighter($footerLinkColor, 15%);
+ 
+// Form
+$inputTextColor: $textColor;
+$inputBackgroundColor: $bodyBackgroundColor;
+$inputBorderColor: $textColor;
+$inputFocusBorderColor: rgba(82, 168, 236, 0.8); 
+$inputBorderRadius: 3px; 
+
+// Grid
+$blockGridImageBorder: none;
+$blockGridImageBackgroundColor: transparent; 
+$blockGridBackgroundColor: transparent; 
+$blockGridImageCorner: none;
+$blockGridImageShadow: none;
+
+// Icon
+$pdfIcon: 'gko/icon_pdf_white_x110.png';
+
+@import "gko_public_all"; 
 @import "gko/elastislide"; 
 /*-----------------------------------------
    Overwritte
 ----------------------------------------- */ 
-.nav-bar {
-	li {
-		a {
-			@include link-colors(#fff,#279db9,#279db9 )
-		}
-	}
-}
 
 /*-----------------------------------------
    Structure
 ----------------------------------------- */
-.body-container {
- position:relative;
-}
-.wrapper-wide {
- @include container;
-	max-width: 940px;
-	@include center-block;
-	background:#ffffff;
-}
-.wrapper-content {
-	@include row;
-	max-width: 980px;
-}
-#main-content{
- @include column(12);
-	margin-top:34px;
-}
-#main-content.sidebar {
- @include column(9);
-} 
-#main-content.sidebar.left_sidebar {
- @include column(7);
-}
-#left_sidebar{ 
- @include column(3);
- margin-top: 34px; 
-}
-#sidebar{ 
- @include column(2);
- margin-top: 34px; 
-}
-#wrapper-wide-footer {
-	text-align: center;
-	font-size: 12px;
-	background: #000;
-	color: #fff;
-}
-#wrapper-wide-masterhead {
- 	position:relative;
-	z-index: 2;
-	background:transparent;
-}
-#masterhead {
-	background:transparent;
-}
-#wrapper-wide-header {
- position:relative;
+.row-fluid#content {
+	padding-top: 60px;
 }
 
 /*-----------------------------------------
-   MASTER HEADER 
+   BANNERS
 ----------------------------------------- */
-ul#locales {
+
+/*-----------------------------------------
+   HEADER
+----------------------------------------- */ 
+.navbar {
+	margin-bottom: 0;
+}
+.navbar .row-fluid {
+	position: relative;
+	height: 300px;
+}
+.navbar-inner {
+	height: 300px;
+	position:relative;
+}
+.navbar .brand {
+	position: absolute;
+	top:0px;
+	left:0px;
+	z-index:2;
+	@include logo(386px, 136px);
+} 
+#banners { 
+	position: absolute;
+	max-height: 300px;
+	bottom:0px;
+	left:0px;
+	overflow:hidden;
+	z-index:1; 
+	background-color: $contentBackgroundColor;
+	.carousel-control {
+		display: none;
+	}
+}
+.navbar .header-nav {
+	height: 300px;
+	position: relative; 
+	z-index:2;
+	
+}
+.nav-collapse {
+	position: absolute;
+	bottom: 0;
+} 
+.navbar .header-top .nav > li > a {
+padding: 0;
+}
+.navbar .header-top {
 	position:absolute; 
 	z-index: 2;
 	width: auto;
@@ -88,7 +162,6 @@ ul#locales {
 		border-bottom: 4px solid white;
 		text-indent: -9999px;
 		width:30px;
-		height:20px;
 		display:block;
 		&.fr {
 			background: transparent asset-url('fr_flag.png', image) no-repeat 0 0;
@@ -98,99 +171,6 @@ ul#locales {
 		}
 	}
 }
-/*-----------------------------------------
-   BANNERS
------------------------------------------ */
-div.timer {
-	//display:none;
-	top: 250px;
-	opacity: 0;
-}
-div.slider-nav {
-	display: none;
-}
-/*-----------------------------------------
-   HEADER
------------------------------------------ */
-.featured { 
-	position: absolute;
-	height: 300px;
-	margin-left: -20px ;
-	top:0px;
-	left:20px;
-	overflow:hidden;
-	z-index:1; 
-}
-
-#site-title-container {
-	position: absolute;
-	top:0px;
-	left:0px;
-	z-index:2;
-	@media only screen and (max-width: 767px) { 
-		height: auto;
-		position:relative;
-	}	
-} 
-h2#site-title {
-	@include logo(386px, 136px);
-}
-#header {
-	height: 300px;
-	position:relative;
-	nav#primary-menu {
-		position: absolute;
-		bottom:0px;
-		left:0px;
-		z-index:2;
-	}
-	.nav-bar {
-		margin-bottom:0px;
-		@extend block-center; 
-		li {
-			background: #000;
-			margin-left:8px; 
-			@include corner-top(8px);
-			&.active {
-				background: #fff;
-				a {
-					@include link-colors(#279db9,#000,#000 )
-				}
-			}
-		}
-	}
-}
-@media only screen and (max-width: 767px) {
-	#header {
-		background: $bodyBackground; 
-		height: auto;
-		nav#primary-menu {
-			height: auto;
-			position: relative;
-			display:block; 
-			&.mobile { 
-				height: auto;
-				position:relative;
-			}
-			.nav-bar {
-				height: auto;
-				position:relative;
-				li { 
-					background: $bodyBackground; 
-					@include corner-top(0px);
-					margin-left:0px;
-					&.active {
-						background: #fff;
-						a {
-							@include link-colors(#279db9,#000,#000 )
-						}
-					}
-				}
-			}
-		}
-	}	 
-}	
-
 /*-----------------------------------------
    Sidebar
 ----------------------------------------- */
@@ -206,13 +186,17 @@ h2#site-title {
 		}
 	}
 }
-
-/* SHOULD BE IN GLOBAL CSS */
-aside {
-	.nav-bar {
-		@include vertical-nav-bar; 
+#left_sidebar { 
+	.nav > li {
+		border-top: 1px solid #ccc;
+		line-height: 28px;
+		&:first-child {
+			border-top: none;
+		}; 
 	}
+
 }
+
 
 nav#pipe-menu {
 	.nav-bar {
@@ -225,13 +209,14 @@ nav#pipe-menu {
 #site-infos {
 	margin-left: -20px;
 	margin-right: -20px;
-	background: $bodyBackground;
 	padding-top: 12px;
 	overflow:hidden;
 	a { 
 		float:right;
-		@include link-colors(#279db9,#fff,#fff);
-		background: $bodyBackground;
 		margin-right: 20px; 
 	}
 }
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+@import "gko/responsive";

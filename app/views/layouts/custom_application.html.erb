@@ -1,10 +1,6 @@
 <% @newsletters_section = site.sections.find_by_name("newsletters") %>
-<% content_for :after_javascript_libraries do %>
-  <%= '<script type="text/javascript" src="http://use.typekit.com/sgv2hyo.js"></script>'.html_safe %>
-  <%= '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>'.html_safe %> 
-<% end %>
 <% content_for(:sidebar) do %>
-  <div class="hide-on-phones">
+  <div class="partial hide-on-mobile">
     <h3>
       <%= link_to(marine_park_map_path, :target => "_blank") do %>
         <%= "<span class='icon'></span>#{t("custom.actions_map")}".html_safe %>
@@ -12,7 +8,7 @@
     </h3>
   	<p><%= t("custom.tips_map") %></p>
   </div>
-  <div class="hide-on-phones">
+  <div class="partial hide-on-mobile">
     <h3>
       <%= link_to(url_for([@newsletters_section])) do %>
         <%= "<span class='icon'></span>#{t("custom.actions_newsletter")}".html_safe %>

@@ -1,9 +1,9 @@
 <% 
 @newsletters_section = site.sections.find_by_name("newsletters")
-@latest_newsletter =  @newsletters_section.document_items.first
+@latest_newsletter =  @newsletters_section.document_items.order('document_items.published_at ASC').first
 %>
-<div class="row">
-  <section class="three columns">
+<div class="row-fluid">
+  <section class="span3">
     <% if @latest_newsletter and @latest_newsletter.document.present? %>
       <div class="latest_newsletter list-view-files hide-on-phones" style="min-height:1px;">
         <div class="entry-thumb <%= 'missing-document-preview' unless @latest_newsletter.thumbnail.present? %>"> 
@@ -16,7 +16,7 @@
        </div>
     <% end %>  
   </section>
-  <section class="seven columns">
+  <section class="span9">
     <% if resource.body.present? %>
       <div class="page_content">
         <%= resource_body_tag do %>

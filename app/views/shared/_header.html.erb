@@ -1,26 +1,53 @@
 <%
 @images = site.sections.find_by_name("main").images unless @images and @images.any?
 %>
-<div id="wrapper-wide-header" class="wrapper-wide">
-  <% if @images.any? %>
-  <div class="wrapper-content featured">
-      <div class="twelve columns">
-        <% unless is_mobile_view? %>
-          <div id="featured">
-            <% @images.each do |image| %>
-              <%= image_fu(image,"980x300#") %>
-            <% end %>
-          </div> 
-        <% end %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="row-fluid">
+      <% if !is_mobile_view? && @images.any? %>
+      <div class="hide-on-mobile" id="banners">
+        <%= render 'images/shared/carousel', :images => @images, :image_style => "980x300#" %>
       </div>
+      <% end %> 
+     <% if !is_mobile_view? && (content_for?(:user_menu) || multilanguage?) %>
+       <div class="header-top">
+         <div class="header-top-inner">
+           <% if content_for?(:user_menu) %>
+             <ul id="user_menu" class="nav pills"><%= yield :user_menu %></ul>
+           <% end %>
+           <%= render '/shared/locales_select' %>   
+         </div>
+       </div>  
+     <% end %>
+    <div class="header-nav">
+       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </a>
+       <!-- Be sure to leave the brand out there if you want it shown -->
+       <h2 id="site-title" class="brand"><%= link_to(site.title, root_url) %></h2> 
+       <h4 id="site-subtitle" class="hide-on-mobile"><%= site.subtitle if site.subtitle.present? %></h4> 
+       <!-- Everything you want hidden at 940px or less, place within here -->
+       <div class="nav-collapse"> 
+         <% if is_mobile_view? && (content_for?(:user_menu) || multilanguage?) %>
+           <nav>
+             <% if content_for?(:user_menu) %>
+               <ul id="user_menu" class="nav pills"><%= yield :user_menu %></ul>
+             <% end %>
+             <%= render '/shared/locales_select' %> 
+           </nav>  
+         <% end %>
+         <!-- .nav, .navbar-search, .navbar-form, etc -->
+         <%= render '/shared/menu', :sections => @main_menu, :menu_name => "primary" %>
+         <%= render '/shared/menu', :sections => @pipe_menu, :menu_name => "pipe" if @pipe_menu && is_mobile_view? %>
+         <%= render '/shared/menu', :sections => @tools_menu, :menu_name => "tools" if @tools_menu && is_mobile_view? %>
+         <% if @site.has_plugin?(:store) %> 
+           <ul class='nav' id="store-menu"><li><%= link_to_cart() %></li></ul>
+         <% end %>
+       </div>
+     </div>    
+    </div>
   </div>
-  <% end %>
-  <header id="header" class="wrapper-content">
-
-    <div id="site-title-container">
-      <h2 id='site-title'><%= link_to(site.title, root_url) %></h2>
-      <h4><%= site.subtitle if site.subtitle.present? %></h4> 
-    </div> 
-    <%= render '/shared/menu', :sections => @main_menu, :menu_name => "primary" %>
-  </header>
 </div>
