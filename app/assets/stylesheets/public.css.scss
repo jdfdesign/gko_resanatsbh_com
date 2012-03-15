@@ -13,10 +13,10 @@ $rowMaxWidth: 940px;
 
 $bodyBackgroundColor: #0B313A;
 $contentBackgroundColor: #ffffff;
-$footerContainerBackgroundColor: none;
+$footerContainerBackgroundColor: transparent;
 $footerBackgroundColor: black;
 $copyrightContainerBackgroundColor: $footerContainerBackgroundColor;
-$copyrightBackgroundColor: $footerBackgroundColor; 
+$copyrightBackgroundColor: transparent; 
 $mainBackgroundColor: #ffffff;
 $sidebarBackgroundColor: #ffffff;
 
@@ -68,7 +68,13 @@ $footerLinkColor: white;
 $footerLinkColorHover: $greenLight;
 $footerLinkColorActive: #fff;
 $footerResponsiveLinkBorder: lighter($footerLinkColor, 15%);
- 
+
+// Copyright links
+$copyrightLinkColor: $greenLight;
+$copyrightLinkColorHover: white;
+$copyrightLinkColorActive: white;
+$copyrightLogoColor: white;
+
 // Form
 $inputTextColor: $textColor;
 $inputBackgroundColor: $bodyBackgroundColor;
@@ -84,7 +90,7 @@ $blockGridImageCorner: none;
 $blockGridImageShadow: none;
 
 // Icon
-$pdfIcon: 'gko/icon_pdf_white_x110.png';
+$pdfIcon: 'gko/icon_pdf_grey_light_x110.png';
 
 @import "gko_public_all"; 
 @import "gko/elastislide"; 
@@ -206,16 +212,7 @@ nav#pipe-menu {
 /*-----------------------------------------
    site infos
 ----------------------------------------- */ 
-#site-infos {
-	margin-left: -20px;
-	margin-right: -20px;
-	padding-top: 12px;
-	overflow:hidden;
-	a { 
-		float:right;
-		margin-right: 20px; 
-	}
-}
+
 /*-----------------------------------------
  RESPONSIVE
 ----------------------------------------- */
