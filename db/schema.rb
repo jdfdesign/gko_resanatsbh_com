@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314233809) do
+ActiveRecord::Schema.define(:version => 20120510140049) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "country_id"
+    t.string   "language",           :limit => 5
   end
 
   add_index "document_items", ["country_id"], :name => "index_press_articles_on_country_id"
@@ -164,8 +165,8 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
     t.string   "locale"
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "feature_translations", ["feature_id"], :name => "index_feature_translations_on_feature_id"
@@ -188,9 +189,11 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
     t.integer  "image_height"
     t.string   "image_uid"
     t.string   "image_ext"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "globalized",      :default => 0
+    t.date     "start_at"
+    t.date     "end_at"
   end
 
   add_index "features", ["owner_type", "owner_id"], :name => "index_features_on_owner_type_and_owner_id"
@@ -274,7 +277,6 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
     t.string   "image_ext"
     t.integer  "globalized",                             :default => 0
     t.integer  "image_folder_id"
-    t.integer  "asset_assignments_count",                :default => 0
   end
 
   add_index "images", ["account_id"], :name => "index_images_on_account_id"
@@ -300,6 +302,18 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
   end
 
   add_index "inquiries", ["site_id"], :name => "index_inquiries_on_site_id"
+
+  create_table "liquid_models", :force => true do |t|
+    t.integer  "site_id"
+    t.text     "body"
+    t.string   "path"
+    t.string   "format"
+    t.string   "locale"
+    t.string   "handler"
+    t.boolean  "partial",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "mail_methods", :force => true do |t|
     t.integer  "site_id"
@@ -415,6 +429,7 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
     t.integer  "globalized",        :default => 0
     t.integer  "level"
     t.boolean  "shallow_permalink", :default => true
+    t.boolean  "no_follow"
   end
 
   add_index "sections", ["link_id", "link_type"], :name => "index_sections_on_link_id_and_link_type"
@@ -472,6 +487,13 @@ ActiveRecord::Schema.define(:version => 20120314233809) do
     t.integer  "globalized",                             :default => 0
     t.text     "plugins"
     t.integer  "site_registrations_count",               :default => 0
+    t.string   "logo_mime_type"
+    t.string   "logo_name"
+    t.integer  "logo_size"
+    t.integer  "logo_width"
+    t.integer  "logo_height"
+    t.string   "logo_uid"
+    t.string   "logo_ext"
   end
 
   add_index "sites", ["account_id"], :name => "index_sites_on_account_id"

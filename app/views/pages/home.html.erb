@@ -1,6 +1,7 @@
 <% 
 @newsletters_section = site.sections.find_by_name("newsletters")
-@latest_newsletter =  @newsletters_section.document_items.order('document_items.published_at ASC').first
+@latest_newsletter =  @newsletters_section.document_items.order('document_items.published_at ASC').with_language(::I18n.locale).first
+@latest_newsletter ||=  @newsletters_section.document_items.order('document_items.published_at ASC').first
 %>
 <div class="row-fluid">
   <section class="span3">
@@ -12,6 +13,7 @@
         <%= render_record_title(@latest_newsletter, :show_link => false) %>
         <div class="entry-links">
           <%= link_to(t(:download_file), @latest_newsletter.document.url, :class => 'download') %>
+<%= @latest_newsletter.language %>
         </div>
        </div>
     <% end %>  

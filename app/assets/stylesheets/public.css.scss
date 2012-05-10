@@ -112,71 +112,12 @@ $pdfIcon: 'gko/icon_pdf_grey_light_x110.png';
 /*-----------------------------------------
    HEADER
 ----------------------------------------- */ 
-.navbar {
-	margin-bottom: 0;
-}
-.navbar .row-fluid {
-	position: relative;
-	height: 300px;
-}
-.navbar-inner {
-	height: 300px;
-	position:relative;
-}
+
 .navbar .brand {
-	position: absolute;
-	top:0px;
-	left:0px;
-	z-index:2;
 	@include logo(386px, 136px);
 } 
-#banners { 
-	position: absolute;
-	max-height: 300px;
-	bottom:0px;
-	left:0px;
-	overflow:hidden;
-	z-index:1; 
-	background-color: $contentBackgroundColor;
-	.carousel-control {
-		display: none;
-	}
-}
-.navbar .header-nav {
-	height: 300px;
-	position: relative; 
-	z-index:2;
-	
-}
-.nav-collapse {
-	position: absolute;
-	bottom: 0;
-} 
-.navbar .header-top .nav > li > a {
-padding: 0;
-}
-.navbar .header-top {
-	position:absolute; 
-	z-index: 2;
-	width: auto;
-	min-width: 1px;
-	right: 0;
-	top: 20px;
-	a {
-		border-left: 4px solid white;
-		border-top: 4px solid white;
-		border-bottom: 4px solid white;
-		text-indent: -9999px;
-		width:30px;
-		display:block;
-		&.fr {
-			background: transparent asset-url('fr_flag.png', image) no-repeat 0 0;
-		}
-		&.en {
-			background: transparent asset-url('en_flag.png', image) no-repeat 0 0;
-		}
-	}
-}
+
+
 /*-----------------------------------------
    Sidebar
 ----------------------------------------- */
@@ -217,3 +158,79 @@ nav#pipe-menu {
  RESPONSIVE
 ----------------------------------------- */
 @import "gko/responsive";
+@media(max-width: 767px) {
+	.container-fluid {
+		background-color: #ffffff;
+		margin: 0;
+		padding: 0px 20px;
+	}
+	#content-container {
+		background-color: #ffffff;
+	}
+	.row-fluid {
+		padding: 0;
+	}
+}
+@media(min-width: 980px) {
+	.navbar {
+		margin-bottom: 0;
+	}
+	.navbar .row-fluid {
+		position: relative;
+		height: 300px;
+	}
+	.navbar-inner {
+		height: 300px;
+		position:relative;
+	}
+	.navbar .brand {
+		position: absolute;
+		top:0px;
+		left:0px;
+		z-index:2;
+	}
+	#banners { 
+		position: absolute;
+		max-height: 300px;
+		bottom:0px;
+		left:0px;
+		overflow:hidden;
+		z-index:1; 
+		background-color: $contentBackgroundColor;
+		.carousel-control {
+			display: none;
+		}
+	}
+	.navbar .header-top {
+		position:absolute; 
+		z-index: 2;
+		width: auto;
+		min-width: 1px;
+		right: 0;
+		top: 20px;
+		.nav > li > a {
+			padding: 0;
+			border-left: 4px solid white;
+			border-top: 4px solid white;
+			border-bottom: 4px solid white;
+			text-indent: -9999px;
+			width:30px;
+			display:block;
+			&.fr {
+				background: transparent asset-url('fr_flag.png', image) no-repeat 0 0;
+			}
+			&.en {
+				background: transparent asset-url('en_flag.png', image) no-repeat 0 0;
+			}
+		}
+	}
+	.navbar .header-nav {
+		height: 300px;
+		position: relative; 
+		z-index:2;
+	}
+	.nav-collapse {
+		position: absolute;
+		bottom: 0;
+	} 
+}
