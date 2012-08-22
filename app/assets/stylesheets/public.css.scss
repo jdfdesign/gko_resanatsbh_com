@@ -1,125 +1,292 @@
- 
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+$smokeAlt: #FBFAF7;
+$greenAlt:#114a57;
+$greenAltLight: #279DB9;  
+// GLOBAL VALUES
+// --------------------------------------------------
 
-//custom variables >>>
-$greenMedium: #114a57; //green
-$greenLight: #279DB9;  
-//<<< custom variables
+// Grays
+// -------------------------
+$black:                 #000;// !default;
+$grayDarker:            #222;// !default;
+$grayDark:              #333;// !default;
+$gray:                  #555;// !default;
+$grayLight:             #999;// !default;
+$grayLighter:           #eee;// !default;
+$white:                 #fff;// !default;
 
-$global-radii-blocks: 4px;
 
-// Layout 
-$containerMaxWidth: 980px; 
-$rowMaxWidth: 940px;
+// Accent colors
+// -------------------------
+$blue:                  #049cdb;// !default;
+$blueDark:              #0064cd;// !default;
+$green:                 #46a546;// !default;
+$red:                   #9d261d;// !default;
+$yellow:                #ffc40d;// !default;
+$orange:                #f89406;// !default;
+$pink:                  #c3325f;// !default;
+$purple:                #7a43b6;// !default;
 
-$bodyBackgroundColor: #0B313A;
-$contentBackgroundColor: #ffffff;
-$footerContainerBackgroundColor: transparent;
-$footerBackgroundColor: black;
-$copyrightContainerBackgroundColor: $footerContainerBackgroundColor;
-$copyrightBackgroundColor: transparent; 
-$mainBackgroundColor: #ffffff;
-$sidebarBackgroundColor: #ffffff;
 
-// Typography
-$baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-$baseFontSize: 12px;
-$baseLineHeight: 20px;
-$textColor: #3C3C3C;
-$headingFontFamily: $baseFontFamily;
-$headingTextColor: $textColor;
-$headingBaseFontSize: 26px;
+// Scaffolding
+// -------------------------
+$bodyBackground:        $smokeAlt;// !default;
+$textColor:             $black;// !default;
+
 
 // Links
-$linkColor: $greenMedium;
-$linkColorHover: #196f83;
-$linkColorActive: #196f83;
+// -------------------------
+$linkColor:             $greenAlt;// !default;
+$linkColorHover:        darken($linkColor, 15%);// !default;
 
-// Nav base 
-$navLinkColor: $greenLight;
-$navLinkColorHover: $greenMedium;
-$navLinkColorActive: $navLinkColorHover;
-$navBackgroundColor: transparent;
-$navBackgroundColorHover: $navBackgroundColor;
-$navBackgroundColorActive: $navBackgroundColor;
+
+// Typography
+// -------------------------
+$sansFontFamily:        "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", Helvetica, Arial, sans-serif;// !default;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif;// !default;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;// !default;
+
+$baseFontSize:          13px;// !default;
+$baseFontFamily:        $sansFontFamily;// !default;
+$baseLineHeight:        18px;// !default;
+$altFontFamily:         $serifFontFamily;// !default;
+
+$headingsFontFamily:    inherit;// !default; // empty to use BS default, @baseFontFamily
+$headingsFontWeight:    bold;// !default;    // instead of browser default, bold
+$headingsColor:         inherit;// !default; // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+$tableBackground:                   transparent;// !default; // overall background-color
+$tableBackgroundAccent:             #f9f9f9;// !default; // for striping
+$tableBackgroundHover:              #f5f5f5;// !default; // for hover
+$tableBorder:                       #ddd;// !default; // table and cell border
+
+
+// Buttons
+// -------------------------
+$btnBackground:                     $white;// !default;
+$btnBackgroundHighlight:            darken($white, 10%);// !default;
+$btnBorder:                         #ccc;// !default;
+
+$btnPrimaryBackground:              $linkColor;// !default;
+$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15%);// !default;
+
+$btnInfoBackground:                 #5bc0de;// !default;
+$btnInfoBackgroundHighlight:        #2f96b4;// !default;
+
+$btnSuccessBackground:              #62c462;// !default;
+$btnSuccessBackgroundHighlight:     #51a351;// !default;
+
+$btnWarningBackground:              lighten($orange, 15%);// !default;
+$btnWarningBackgroundHighlight:     $orange;// !default;
+
+$btnDangerBackground:               #ee5f5b;// !default;
+$btnDangerBackgroundHighlight:      #bd362f;// !default;
+
+$btnInverseBackground:              $gray;// !default;
+$btnInverseBackgroundHighlight:     $grayDarker;// !default;
+
+
+// Forms
+// -------------------------
+$inputBackground:               $white;// !default;
+$inputBorder:                   #ccc;// !default;
+$inputBorderRadius:             3px;// !default;
+$inputDisabledBackground:       $grayLighter;// !default;
+
+$formActionsBackground:         #f5f5f5;// !default;
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white;// !default;
+$dropdownBorder:                rgba(0,0,0,.2);// !default;
+$dropdownLinkColor:             $grayDark;// !default;
+$dropdownLinkColorHover:        $white;// !default;
+$dropdownLinkBackgroundHover:   $linkColor;// !default;
+$dropdownDividerTop:            #e5e5e5;// !default;
+$dropdownDividerBottom:         $white;// !default;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+$zindexDropdown:        1000;// !default;
+$zindexPopover:         1010;// !default;
+$zindexTooltip:         1020;// !default;
+$zindexFixedNavbar:     1030;// !default;
+$zindexModalBackdrop:   1040;// !default;
+$zindexModal:           1050;// !default;
+
+
+// Sprite icons path
+// -------------------------
+$iconSpritePath:        "twitter/bootstrap/glyphicons-halflings.png";// !default;
+$iconWhiteSpritePath:   "twitter/bootstrap/glyphicons-halflings-white.png";// !default;
+
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:       $grayLight;// !default;
+
+
+// Hr border color
+// -------------------------
+$hrBorder:              $grayLighter;// !default;
+
 
 // Navbar
-$navbarBackgroundHighlight: $bodyBackgroundColor;
-$navbarBackground: $bodyBackgroundColor;
-$navbarText: $textColor;
-$navbarLinkColor: white;
-$navbarLinkColorHover: $greenLight;
-$navbarLinkColorActive: $navbarLinkColorHover;
-$navbarLinkSpace: 8px;
-$navbarLinkBackgroundColor: black;
-$navbarLinkBackgroundColorHover: $navbarLinkBackgroundColor;
-$navbarLinkBackgroundColorActive: white;
-$navbarLinkCorner: 8px 8px 0 0;
-$navbarButtonBackgroundHighlight: $navbarBackgroundHighlight; 
-$navbarButtonBackground: black; 
-$navbarButtonIconBarColor: white;
-$navbarResponsiveLinkBorder: lighter($navbarLinkColor, 15%);
-$navbarDropdownBackground: $navbarBackground;
-$navbarDropdownLinkColor: $navbarLinkColor;
-$navbarDropdownLinkColorHover: $navbarLinkColorHover;
-$navbarDropdownLinkColorActive: $navbarLinkColorActive; 
+// -------------------------
+$navbarHeight:                    40px;// !default;
+$navbarBackground:                $greenAlt;// !default;
+$navbarBackgroundHighlight:       $greenAlt;// !default;
 
-// Footer links
-$footerLinkColor: white;
-$footerLinkColorHover: $greenLight;
-$footerLinkColorActive: #fff;
-$footerResponsiveLinkBorder: lighter($footerLinkColor, 15%);
+$navbarText:                      $white;// !default;
+$navbarLinkColor:                 $white;// !default;
+$navbarLinkColorHover:            $greenAlt;// !default;
+$navbarLinkColorActive:           $navbarLinkColorHover;// !default;
+$navbarLinkBackgroundHover:       $white;// !default;
+$navbarLinkBackgroundActive:      $white;// !default;
 
-// Copyright links
-$copyrightLinkColor: $greenLight;
-$copyrightLinkColorHover: white;
-$copyrightLinkColorActive: white;
-$copyrightLogoColor: white;
+$navbarSearchBackground:          lighten($navbarBackground, 25%);// !default;
+$navbarSearchBackgroundFocus:     $white;// !default;
+$navbarSearchBorder:              darken($navbarSearchBackground, 30%);// !default;
+$navbarSearchPlaceholderColor:    #ccc;// !default;
+$navbarBrandColor:                $white;// !default;
 
-// Form
-$inputTextColor: $textColor;
-$inputBackgroundColor: $bodyBackgroundColor;
-$inputBorderColor: $textColor;
-$inputFocusBorderColor: rgba(82, 168, 236, 0.8); 
-$inputBorderRadius: 3px; 
 
-// Grid
-$blockGridImageBorder: none;
-$blockGridImageBackgroundColor: transparent; 
-$blockGridBackgroundColor: transparent; 
-$blockGridImageCorner: none;
-$blockGridImageShadow: none;
+// Hero unit
+// -------------------------
+$heroUnitBackground:              $grayLighter;// !default;
+$heroUnitHeadingColor:            inherit;// !default;
+$heroUnitLeadColor:               inherit;// !default;
 
-// Icon
-$pdfIcon: 'gko/icon_pdf_grey_light_x110.png';
 
-@import "gko_public_all"; 
-@import "gko/elastislide"; 
+// Form states and alerts
+// -------------------------
+$warningText:             #c09853;// !default;
+$warningBackground:       #fcf8e3;// !default;
+$warningBorder:           darken(adjust_hue($warningBackground, -10deg), 3%);// !default;
+
+$errorText:               #b94a48;// !default;
+$errorBackground:         #f2dede;// !default;
+$errorBorder:             darken(adjust_hue($errorBackground, -10deg), 3%);// !default;
+
+$successText:             #468847;// !default;
+$successBackground:       #dff0d8;// !default;
+$successBorder:           darken(adjust_hue($successBackground, -10deg), 5%);// !default;
+
+$infoText:                #3a87ad;// !default;
+$infoBackground:          #d9edf7;// !default;
+$infoBorder:              darken(adjust_hue($infoBackground, -10deg), 7%);// !default;
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+$gridColumns:             12;// !default;
+$gridColumnWidth:         60px;// !default;
+$gridGutterWidth:         20px;// !default;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));// !default;
+
+// Fluid grid
+// -------------------------
+$fluidGridColumnWidth:    6.382978723%;// !default;
+$fluidGridGutterWidth:    2.127659574%;// !default;
+
+// Navbar (gko addon)
+// -------------------------
+$navbarLinkBackground:            $black;// !default;
+// Footer (gko addon)
+// -------------------------
+$footerHeight:                    40px;// !default;
+$footerBackground:                $black;// !default;
+
+$footerText:                      $white;// !default;
+$footerLinkColor:                 $white;// !default;
+$footerLinkColorHover:            $greenAltLight;// !default;
+$footerLinkColorActive:           $footerLinkColorHover;// !default;
+$footerLinkBackgroundHover:       transparent;// !default;
+$footerLinkBackgroundActive:      transparent;// !default;
+
+
+@import "twitter/bootstrap";
+@import "gko/mixin.1.0.0";
+@import "gko/default";
+//@import "gko/debug";
+
 /*-----------------------------------------
-   Overwritte
------------------------------------------ */ 
-
-/*-----------------------------------------
-   Structure
+LAYOUT 
 ----------------------------------------- */
-.row-fluid#content {
+#wrapper-wide-body {
+	max-width: 980px;
+	@include box-sizing(border-box);
+	@include container-fixed();
+}
+#main-container {
 	padding-top: 60px;
 }
-
-/*-----------------------------------------
-   BANNERS
------------------------------------------ */
-
 /*-----------------------------------------
    HEADER
 ----------------------------------------- */ 
-
 .navbar .brand {
-	@include logo(386px, 136px);
-} 
-
-
+	a {
+		padding: 0;
+		margin: 0 auto;
+		background: transparent image-url("logo.png") center center no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		text-decoration: none;
+		display: block;
+		width: 386px;
+		height: 136px;
+		@include hide-text;
+	}
+}
+.navbar .nav#locales {
+	margin: 0;
+	
+}
+.header-nav ul.nav > li {
+	margin-left: 6px;
+	&:first-child {
+		margin-left: 0;	
+	};
+}
+.header-nav ul.nav > li > a {
+	@include border-radius(6px 6px 0  0);
+}
+.navbar .btn-navbar {
+  @include buttonBackground($black, $black);
+  color: $white;	
+}
+.navbar .btn-navbar.active, 
+.navbar .btn-navbar:active,
+.navbar .btn-navbar:hover {
+  color: $white;	
+}
+#banners { 
+	display: none;
+}
 /*-----------------------------------------
-   Sidebar
+   TYPOGRAPHY
+----------------------------------------- */
+.page-title {
+	margin-bottom: $baseLineHeight * 1.5;
+}
+/*-----------------------------------------
+   SIDEBAR
 ----------------------------------------- */
 #sidebar {
 	h3 {
@@ -143,45 +310,82 @@ $pdfIcon: 'gko/icon_pdf_grey_light_x110.png';
 	}
 
 }
-
-
+#main-container {
+	background-color: $white;
+}
+/*-----------------------------------------
+ FOOTER
+----------------------------------------- */
+.footer-content {
+	padding: $baseLineHeight * 2 0;
+}
 nav#pipe-menu {
 	.nav-bar {
 		margin-top: 0px;
 	}
 }
 /*-----------------------------------------
-   site infos
------------------------------------------ */ 
-
+ HOME
+----------------------------------------- */
+#home {
+	.latest_newsletter.h2 {
+		
+	}
+}
 /*-----------------------------------------
  RESPONSIVE
 ----------------------------------------- */
-@import "gko/responsive";
+@import "twitter/bootstrap/responsive";
+@import "gko/default_responsive";
+
 @media(max-width: 767px) {
-	.container-fluid {
-		background-color: #ffffff;
+	#main-container {
+		background-color: $white;
 		margin: 0;
 		padding: 0px 20px;
 	}
-	#content-container {
-		background-color: #ffffff;
+	#main {
+		background-color: $white;
 	}
 	.row-fluid {
 		padding: 0;
 	}
 }
+@media(max-width: 979px) {
+
+	.nav-collapse .nav > li > a,
+	.nav-collapse .dropdown-menu a {
+    	background-color: transparent;
+  	}
+	.nav-collapse .nav > li > a:hover,
+	.nav-collapse .dropdown-menu a:hover {
+    	color: $greenAltLight;
+		
+  	}
+	footer .nav > li {
+		float: none;
+	}
+}
 @media(min-width: 980px) {
+	// Overwritte bootstrap default to have a background color
+	.navbar .nav li.dropdown.open > .dropdown-toggle,
+	.navbar .nav li.dropdown.active > .dropdown-toggle,
+	.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+	  background-color: $white;
+	color: $navbarLinkColorActive;
+	}
+	// Overwritte bootstrap default to have a correct link color on hover
+	.navbar .nav li.dropdown.active > .dropdown-toggle:hover {
+	  color: $navbarLinkColorActive;
+	}
+	
 	.navbar {
 		margin-bottom: 0;
+		position:relative;
 	}
-	.navbar .row-fluid {
-		position: relative;
-		height: 300px;
-	}
+	.navbar .row-fluid,
 	.navbar-inner {
 		height: 300px;
-		position:relative;
 	}
 	.navbar .brand {
 		position: absolute;
@@ -189,18 +393,7 @@ nav#pipe-menu {
 		left:0px;
 		z-index:2;
 	}
-	#banners { 
-		position: absolute;
-		max-height: 300px;
-		bottom:0px;
-		left:0px;
-		overflow:hidden;
-		z-index:1; 
-		background-color: $contentBackgroundColor;
-		.carousel-control {
-			display: none;
-		}
-	}
+
 	.navbar .header-top {
 		position:absolute; 
 		z-index: 2;
@@ -233,4 +426,19 @@ nav#pipe-menu {
 		position: absolute;
 		bottom: 0;
 	} 
+	#banners { 
+		display: block;
+		position: absolute;
+		max-height: 300px;
+		bottom:0px;
+		left:0px;
+		overflow:hidden;
+		z-index:1; 
+		background-color: $white;
+		.carousel-control {
+			display: none;
+		}
+	}
+
+	
 }

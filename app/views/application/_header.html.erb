@@ -1,0 +1,42 @@
+<%
+@images = site.sections.find_by_name("main").images unless @images.try(:any?)
+%>
+<!-- Header
+================================================== -->
+<header class="navbar hide-on-print">
+  <div class="navbar-inner">
+	  <%- if !is_mobile_view? && @images.any? -%>
+      <div class="hide-on-mobile" id="banners">
+        <%= render 'images/shared/carousel', :images => @images, :image_style => "980x300#" %>
+      </div>
+      <%- end -%>
+    <div class="row-fluid">
+      <div class="header-top">
+          <%#= render 'login_bar' %>
+          <%= render 'locales_select' %>
+      </div>
+      <div class="header-nav">
+        <!-- Be sure to leave the brand out there if you want it shown -->
+        <%= render 'site_title' %>
+		<%= content_tag(:h4, site.subtitle.html_safe, :id => "site-subtitle") if site.subtitle.present? %>
+		<%#= content_tag(:address, site.preferred_contact_address.html_safe, :id => "site-subtitle") if site.preferred_contact_address.present? %>
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span><%= t(:navigation_menu) %><i class="icon-chevron-down icon-white"></i></span>
+        </a>
+        <!-- Everything you want hidden at 940px or less, place within here -->
+        <div class="nav-collapse">
+          <!-- .nav, .navbar-search, .navbar-form, etc -->
+          <%= render_primary_menu %>
+		  <% if site.has_plugin?(:store) %>
+			<nav id="store-menu-container">
+	     	 	<ul class='nav' id="store-menu">
+                	<li><%= link_to_cart() %></li>
+              	</ul>
+	    	</nav>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

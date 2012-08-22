@@ -10,10 +10,8 @@
         <div class="entry-thumb <%= 'missing-document-preview' unless @latest_newsletter.thumbnail.present? %>"> 
           <%= image_tag(@latest_newsletter.thumbnail.url) if @latest_newsletter.thumbnail.present? %> 
         </div> 
-        <%= render_record_title(@latest_newsletter, :show_link => false) %>
         <div class="entry-links">
-          <%= link_to(t(:download_file), @latest_newsletter.document.url, :class => 'download') %>
-<%= @latest_newsletter.language %>
+          <%= link_to(t(:download_lastest_newsletter), @latest_newsletter.document.url, :class => 'download') %>
         </div>
        </div>
     <% end %>  
