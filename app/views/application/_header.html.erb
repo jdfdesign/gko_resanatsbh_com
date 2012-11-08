@@ -5,7 +5,7 @@
 ================================================== -->
 <header class="navbar hide-on-print">
   <div class="navbar-inner">
-	  <%- if !is_mobile_view? && @images.any? -%>
+	  <%- if @images.any? -%>
       <div class="hide-on-mobile" id="banners">
         <%= render 'images/shared/carousel', :images => @images, :image_style => "980x300#" %>
       </div>

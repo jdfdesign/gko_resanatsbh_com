@@ -222,9 +222,7 @@ $footerLinkBackgroundActive:      transparent;// !default;
 
 
 @import "twitter/bootstrap";
-@import "gko/mixin.1.0.0";
-@import "gko/default";
-//@import "gko/debug";
+@import "gko/public/base";
 
 /*-----------------------------------------
 LAYOUT 
@@ -276,6 +274,9 @@ LAYOUT
 .navbar .btn-navbar:hover {
   color: $white;	
 }
+.navbar .header-top {
+	float:right; 
+}
 #banners { 
 	display: none;
 }
@@ -323,6 +324,10 @@ nav#pipe-menu {
 	.nav-bar {
 		margin-top: 0px;
 	}
+}
+#site-by {
+	font-size: 9px;
+	text-align: center;
 }
 /*-----------------------------------------
  HOME

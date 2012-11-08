@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821112826) do
+ActiveRecord::Schema.define(:version => 20121108145538) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "assets", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "content_type"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "size"
+    t.string   "source"
+    t.string   "source_filename"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "assets", ["site_id"], :name => "index_assets_on_site_id"
 
   create_table "configurations", :force => true do |t|
     t.integer  "site_id"
@@ -154,6 +168,22 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
 
   add_index "documents", ["account_id"], :name => "index_documents_on_account_id"
   add_index "documents", ["site_id"], :name => "index_documents_on_site_id"
+
+  create_table "element_images", :id => false, :force => true do |t|
+    t.integer  "site_id"
+    t.integer  "section_id"
+    t.integer  "image_id"
+    t.string   "title"
+    t.string   "caption"
+    t.string   "link"
+    t.string   "link_target"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "element_images", ["image_id"], :name => "index_element_images_on_image_id"
+  add_index "element_images", ["section_id"], :name => "index_element_images_on_section_id"
+  add_index "element_images", ["site_id"], :name => "index_element_images_on_site_id"
 
   create_table "feature_translations", :force => true do |t|
     t.integer  "feature_id"
@@ -299,8 +329,10 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
     t.boolean  "default",      :default => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.integer  "position",     :default => 1
   end
 
+  add_index "languages", ["site_id", "position"], :name => "index_languages_on_site_id_and_position"
   add_index "languages", ["site_id"], :name => "index_languages_on_site_id"
 
   create_table "liquid_models", :force => true do |t|
@@ -314,16 +346,6 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
-
-  create_table "mail_methods", :force => true do |t|
-    t.integer  "site_id"
-    t.string   "environment"
-    t.boolean  "active",      :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "mail_methods", ["site_id"], :name => "index_mail_methods_on_site_id"
 
   create_table "partner_translations", :force => true do |t|
     t.integer  "partner_id"
@@ -383,7 +405,6 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
   create_table "section_translations", :force => true do |t|
     t.integer  "section_id"
     t.string   "locale"
-    t.string   "title_addon"
     t.string   "path"
     t.string   "menu_title"
     t.string   "title"
@@ -417,18 +438,19 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
     t.string   "meta_title"
     t.text     "meta_description"
     t.string   "redirect_url"
-    t.string   "title_addon"
     t.datetime "published_at"
     t.boolean  "hidden",            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "menu_title"
-    t.integer  "level"
     t.boolean  "shallow_permalink", :default => true
-    t.boolean  "no_follow"
+    t.boolean  "robot_index",       :default => true
+    t.boolean  "robot_follow",      :default => true
+    t.boolean  "restricted",        :default => false
   end
 
   add_index "sections", ["link_id", "link_type"], :name => "index_sections_on_link_id_and_link_type"
+  add_index "sections", ["parent_id", "lft"], :name => "index_sections_on_parent_id_and_lft"
   add_index "sections", ["parent_id"], :name => "index_sections_on_parent_id"
   add_index "sections", ["site_id"], :name => "index_sections_on_site_id"
 
@@ -459,13 +481,12 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
     t.string   "meta_title"
     t.string   "subtitle"
     t.string   "timezone"
-    t.string   "locales",                  :limit => 17
-    t.boolean  "public",                                 :default => true
+    t.boolean  "public",                   :default => true
     t.text     "options"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "plugins"
-    t.integer  "site_registrations_count",               :default => 0
+    t.integer  "site_registrations_count", :default => 0
     t.string   "logo_mime_type"
     t.string   "logo_name"
     t.integer  "logo_size"
@@ -474,6 +495,9 @@ ActiveRecord::Schema.define(:version => 20120821112826) do
     t.string   "logo_uid"
     t.string   "logo_ext"
     t.string   "default_image_uid"
+    t.datetime "liquid_models_updated_at"
+    t.text     "page_types"
+    t.text     "mailer_settings"
   end
 
   add_index "sites", ["account_id"], :name => "index_sites_on_account_id"
