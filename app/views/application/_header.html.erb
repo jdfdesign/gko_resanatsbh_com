@@ -1,6 +1,5 @@
-<%
-@images = site.sections.find_by_name("main").images unless @images.try(:any?)
-%>
+<% cache([action_name, site, I18n.locale, 'header']) do %>
+<% @images = site.sections.find_by_name("main").images unless @images.try(:any?) %>
 <!-- Header
 ================================================== -->
 <header class="navbar hide-on-print">
@@ -40,3 +39,4 @@
     </div>
   </div>
 </header>
+<% end %>

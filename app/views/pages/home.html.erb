@@ -1,7 +1,8 @@
+<% cache ['home', I18n.locale, site] do %>
 <% 
 @newsletters_section = site.sections.find_by_name("newsletters")
-@latest_newsletter =  @newsletters_section.document_items.order('document_items.published_at ASC').with_language(::I18n.locale).first
-@latest_newsletter ||=  @newsletters_section.document_items.order('document_items.published_at ASC').first
+@latest_newsletter =  @newsletters_section.document_items.order('document_items.published_at DESC').with_language(::I18n.locale).first
+@latest_newsletter ||=  @newsletters_section.document_items.order('document_items.published_at DESC').first
 %>
 <div class="row-fluid">
   <section class="span3">
@@ -11,7 +12,7 @@
           <%= image_tag(@latest_newsletter.thumbnail.url) if @latest_newsletter.thumbnail.present? %> 
         </div> 
         <div class="entry-links">
-          <%= link_to(t(:download_lastest_newsletter), @latest_newsletter.document.url, :class => 'download') %>
+          <%= link_to(t('custom.download_lastest_newsletter'), @latest_newsletter.document.url, :class => 'download') %>
         </div>
        </div>
     <% end %>  
@@ -26,3 +27,4 @@
     <% end %> 
   </section>
 </div>
+<% end %>

@@ -3,20 +3,20 @@ source :rubygems
 gem 'iconv'
 
 group :assets do
- gem 'sass-rails', '~> 3.2.5'
+ gem 'sass-rails', '~> 3.2.6'
  gem 'coffee-rails', '~> 3.2.2'
  gem 'uglifier', '>= 1.0.3'
 end
 
 prod_location = 'git@github.com:jdfdesign/gko_cms3.git'
-prod_version = "= 0.4.32"
+
 group :production do
-	gem 'gko_core', prod_version, :git => prod_location
-	gem 'gko_auth', prod_version, :git => prod_location
-	gem 'gko_images', prod_version, :git => prod_location
-	gem 'gko_documents', prod_version, :git => prod_location
-	gem 'gko_inquiries', prod_version, :git => prod_location
-	gem 'gko_features', prod_version, :git => prod_location
+	gem 'gko_core', :git => prod_location
+	gem 'gko_auth', :git => prod_location
+	gem 'gko_images', :git => prod_location
+	gem 'gko_documents', :git => prod_location
+	gem 'gko_inquiries', :git => prod_location
+	gem 'gko_features', :git => prod_location
 end
 
 #group :development do

@@ -221,8 +221,9 @@ $footerLinkBackgroundHover:       transparent;// !default;
 $footerLinkBackgroundActive:      transparent;// !default;
 
 
-@import "twitter/bootstrap";
+@import "twitter.2.0.4/bootstrap";
 @import "gko/public/base";
+@import "galleria";
 
 /*-----------------------------------------
 LAYOUT 

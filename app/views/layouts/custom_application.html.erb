@@ -1,5 +1,5 @@
-<% @newsletters_section = site.sections.find_by_name("newsletters") %>
 <% content_for(:sidebar) do %>
+  <% cache([action_name, site, I18n.locale, 'sidebar']) do %>
   <div class="partial hide-on-mobile">
     <h3>
       <%= link_to(marine_park_map_path, :target => "_blank") do %>
@@ -10,13 +10,13 @@
   </div>
   <div class="partial hide-on-mobile">
     <h3>
-      <%= link_to(url_for([@newsletters_section])) do %>
+      <%= link_to(site.sections.find_by_name("newsletters").try(:public_url)) do %>
         <%= "<span class='icon'></span>#{t("custom.actions_newsletter")}".html_safe %>
       <% end %>
     </h3>
     <p><%= t("custom.tips_newsletter") %></p>
   </div>
-
+  <% end %>
 <% end %>
 
 <%= render :template => 'layouts/application' %> 
