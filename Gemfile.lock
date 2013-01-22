@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:jdfdesign/gko_cms3.git
-  revision: 60f74f553f3271376a9b3cafbd77ea497d0fab6d
+  revision: c14d3a45c4e802be51a6de052343e88b3e7f0c73
   specs:
     gko_auth (0.6.13)
       cancan (>= 1.6.8)
